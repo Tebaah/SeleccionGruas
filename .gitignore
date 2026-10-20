@@ -1,0 +1,53 @@
+# ---------------------------------------------------------------------------
+# Datos y artefactos generados (se reconstruyen con el pipeline)
+#   python3 -m tools.build_fleet db/fleet.db
+#   python3 -m tools.export_supabase db/fleet.db supabase
+# ---------------------------------------------------------------------------
+crane_tables/db/
+crane_tables/out/
+crane_tables/supabase/data/
+crane_tables/supabase/seed.sql
+
+# ---------------------------------------------------------------------------
+# Manuales de origen (PDF del fabricante: tamaño y licencia)
+# Colócalos en la raíz del repo; tools/build_fleet.py los lee desde ahí.
+# ---------------------------------------------------------------------------
+*.pdf
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---------------------------------------------------------------------------
+# Entorno y secretos
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+.vercel/
+*.pem
+*.key
+
+# ---------------------------------------------------------------------------
+# Herramientas locales del agente
+# ---------------------------------------------------------------------------
+.opencode/
+
+# ---------------------------------------------------------------------------
+# SO / editor
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
