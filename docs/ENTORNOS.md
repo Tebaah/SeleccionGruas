@@ -123,6 +123,21 @@ npx supabase db reset   # aplica migraciones/seed
 > La creación de los proyectos en Supabase y Vercel requiere las cuentas y
 > credenciales del propietario.
 
+### Protección de `main` (limitación del plan)
+
+GitHub **Free no permite proteger ramas en repositorios privados**: tanto la API
+de branch protection como la de rulesets devuelven
+`403 Upgrade to GitHub Pro or make this repository public`.
+
+Opciones:
+
+1. **GitHub Pro** (recomendado si el repo debe seguir privado): habilita la
+   protección de ramas y los rulesets.
+2. **Hacer el repositorio público**: el código no contiene datos ni secretos
+   (PDFs y artefactos están ignorados), pero expone el código.
+3. **Mientras tanto**: trabajar siempre en rama + PR y no hacer push directo a
+   `main`. Es una convención, **no** un bloqueo técnico.
+
 ## Variables de entorno
 
 | Variable | Dónde | ¿Pública? |
@@ -185,5 +200,5 @@ npx supabase db reset   # aplica migraciones/seed
 - [ ] Crear los proyectos Supabase de staging y producción.
 - [ ] Crear/conectar el proyecto de Vercel.
 - [ ] Cargar las variables de entorno en cada entorno.
-- [ ] Proteger `main` y exigir el check de CI.
+- [ ] Proteger `main` y exigir el check de CI (requiere GitHub Pro o repo público).
 - [ ] Probar un PR de punta a punta (preview → merge → producción).
