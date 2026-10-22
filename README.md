@@ -75,5 +75,6 @@ Requisitos: `poppler-utils` y Python 3.11+.
 - [`SRS.md`](SRS.md) — modelo de datos real, requisitos y contrato de la RPC.
 - [`ANALISIS.md`](ANALISIS.md) — alternativas de ingesta y validación.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — convenciones de commits, ramas y PRs.
+- [`docs/ENTORNOS.md`](docs/ENTORNOS.md) — entornos local, preview y producción.
 - [`crane_tables/README.md`](crane_tables/README.md) — pipeline paso a paso.
 - [`crane_tables/SUPABASE.md`](crane_tables/SUPABASE.md) — carga en Supabase.

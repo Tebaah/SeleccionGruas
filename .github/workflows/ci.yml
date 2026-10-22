@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  calidad:
+    name: Compilación, pruebas y guardas
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compilar módulos del pipeline
+        run: python3 -m compileall -q crane_tables/tools
+
+      - name: Pruebas unitarias
+        working-directory: crane_tables
+        run: python3 -m unittest discover -s tests -t . -v
+
+      - name: No versionar PDFs ni artefactos generados
+        run: |
+          prohibidos=$(git ls-files | grep -E '\.pdf$|crane_tables/db/|crane_tables/out/|supabase/data/|supabase/seed\.sql$' || true)
+          if [ -n "$prohibidos" ]; then
+            echo "::error::Se han versionado archivos que deben estar ignorados:"
+            echo "$prohibidos"
+            exit 1
+          fi
+          echo "OK: no hay PDFs ni artefactos generados versionados."
